@@ -1,0 +1,39 @@
+version: "2.1"
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Newy_york
+
+    volumes:
+      - /home/rpserver/jelly/config:/config
+      - /home/rpserver/block_data/tvshows:/data/tvshows
+      - /home/rpserver/block_data/movies:/data/movies
+      - /home/rpserver/block_data:/data/block_data
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jelly.entrypoints=http"
+      - "traefik.http.routers.jelly.rule=Host(`jell.rutvik2611.com`)"
+      - "traefik.http.middlewares.jelly-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.jelly.middlewares=jelly-https-redirect"
+      - "traefik.http.routers.jelly-secure.entrypoints=https"
+      - "traefik.http.routers.jelly-secure.rule=Host(`jelly.rutvik2611.com`)"
+      - "traefik.http.routers.jelly-secure.tls=true"
+      - "traefik.http.routers.jelly-secure.service=jelly"
+      - "traefik.http.services.jelly.loadbalancer.server.port=8096"
+      - "traefik.docker.network=proxy"
+    networks:
+      - proxy
+networks:
+  proxy:
+    external:
+      name: proxy
