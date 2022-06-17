@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Newy_york
+      - TZ=America/New_york
 
     volumes:
       - /home/rpserver/jelly/config:/config
@@ -22,7 +22,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jelly.entrypoints=http"
-      - "traefik.http.routers.jelly.rule=Host(`jell.rutvik2611.com`)"
+      - "traefik.http.routers.jelly.rule=Host(`jelly.rutvik2611.com`)"
       - "traefik.http.middlewares.jelly-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.jelly.middlewares=jelly-https-redirect"
       - "traefik.http.routers.jelly-secure.entrypoints=https"
