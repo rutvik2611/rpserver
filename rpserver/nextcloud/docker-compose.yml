@@ -10,6 +10,8 @@ services:
     volumes:
       - /home/rpserver/nextcloud/config:/config
       - /home/rpserver/block_data/ALL/nextclouddata-p:/data
+    ports:
+      - 444:443
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -21,7 +23,7 @@ services:
       - "traefik.http.routers.nextcloud-secure.rule=Host(`nextcloud.rutvik2611.com`)"
       - "traefik.http.routers.nextcloud-secure.tls=true"
       - "traefik.http.routers.nextcloud-secure.service=nextcloud"
-      - "traefik.http.services.nextcloud.loadbalancer.server.port=433"
+      - "traefik.http.services.nextcloud.loadbalancer.server.port=443"
       - "traefik.docker.network=proxy"
     networks:
       - proxy
