@@ -1,0 +1,42 @@
+version: "2"
+services:
+  qbittorrentvpn:
+    image: markusmcnugen/qbittorrentvpn
+    container_name: qbittorrentvpn
+    privileged: true
+    environment:
+      - VPN_USERNAME=vpnusername
+      - VPN_PASSWORD=vpnpassword
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - WEBUI_PORT_ENV=8080 #optional
+      - INCOMING_PORT_ENV=8999 #optional
+      - VPN_ENABLED=no
+      - LAN_NETWORK=172.18.0.0/24
+      - NAME_SERVERS=1.1.1.1,1.0.0.1
+    ports:
+      - 8080:8080
+      - 8999:8999
+      - 8999:8999/udp
+    volumes:
+      - /home/rpserver/qbitvp/data/config:/config
+      - /home/rpserver/block_data:/downloads
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.q.entrypoints=http"
+      - "traefik.http.routers.q.rule=Host(`q.rutvik2611.com`)"
+      - "traefik.http.middlewares.q-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.q.middlewares=q-https-redirect"
+      - "traefik.http.routers.q-secure.entrypoints=https"
+      - "traefik.http.routers.q-secure.rule=Host(`q.rutvik2611.com`)"
+      - "traefik.http.routers.q-secure.tls=true"
+      - "traefik.http.routers.q-secure.service=q"
+      - "traefik.http.services.q.loadbalancer.server.port=8080"
+      - "traefik.docker.network=proxy"
+    networks:
+      - proxy
+networks:
+  proxy:
+    external:
+      name: proxy
