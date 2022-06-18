@@ -5,7 +5,7 @@ sudo apt-get install -y \
     curl \
     software-properties-common
 echo "-----------------------------------------------------------------------------------------------------------------------"
-echo "                                        Installed     a   BUNCH                                                                           "
+echo "Installed a bunch"
 echo "-----------------------------------------------------------------------------------------------------------------------"
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
