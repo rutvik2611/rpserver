@@ -1,3 +1,7 @@
 wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/ftpdockerubuntu.sh | bash
 
 wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash
+
+https://tech.aufomm.com/traefik/
+
+https://tech.aufomm.com/deploy-wordpress-with-docker-and-traefik-2/
