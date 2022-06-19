@@ -6,8 +6,11 @@ services:
     restart: always
     volumes:
       - db:/var/lib/postgresql/data
-    env_file:
-      - db.env
+    environment:
+      MYSQL_ROOT_PASSWORD: SUPER_SECRET
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: SUPER_SUPER_SECRET
     networks:
       - internal
 
@@ -18,8 +21,11 @@ services:
       - nextcloud:/var/www/html # Pulls from /var/lib/docker/volumes/nextcloud_nextcloud/_data/
       - ./nextcloud/config:/var/www/html/config # Pulls from local dir
       - /home/rpserver/nextcloud:/mnt/hdd # Pulls from root
-    env_file:
-      - db.env
+    environment:
+      MYSQL_ROOT_PASSWORD: SUPER_SECRET
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: SUPER_SUPER_SECRET
     depends_on:
       - db
     networks:

@@ -5,3 +5,10 @@ wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash
 https://tech.aufomm.com/traefik/
 
 https://tech.aufomm.com/deploy-wordpress-with-docker-and-traefik-2/
+
+
+
+dc
+https://github.com/2xlink/docker-compose-traefik-nextcloud/tree/master/nextcloud
+https://www.smarthomebeginner.com/traefik-docker-nextcloud/
+https://harambasic.de/posts/docker-compose-for-nextcloud-with-traefik-2-ssh/
