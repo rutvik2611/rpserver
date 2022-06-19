@@ -88,7 +88,7 @@ certificatesResolvers:
           - "1.0.0.1:53"
   cloudflare:
     acme:
-      email: admin@rutvik2611.com
+      email: rutvik2611@gmail.com
       storage: acme.json
       dnsChallenge:
         provider: cloudflare
