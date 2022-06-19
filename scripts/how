@@ -1,4 +1,6 @@
 wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/ftpdockerubuntu.sh | bash
+wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/aftercopy.sh | bash
+
 
 wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash
 
