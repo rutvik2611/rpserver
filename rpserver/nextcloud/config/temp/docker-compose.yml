@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      MYSQL_ROOT_PASSWORD: SUPER_SECRET
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: SUPER_SUPER_SECRET
+    networks:
+      - internal
+
+  app:
+    image: nextcloud:latest
+    restart: always
+    volumes:
+      - nextcloud:/var/www/html # Pulls from /var/lib/docker/volumes/nextcloud_nextcloud/_data/
+      - ./nextcloud/config:/var/www/html/config # Pulls from local dir
+      - /home/rpserver/nextcloud:/mnt/hdd # Pulls from root
+    environment:
+      MYSQL_ROOT_PASSWORD: SUPER_SECRET
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: SUPER_SUPER_SECRET
+    depends_on:
+      - db
+    networks:
+      - proxy
+      - internal
+    labels:
+      - "traefik.backend=nextcloud"
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:nc.kumula.me"
+      - "traefik.port=80"
+
+  redis:
+    image: redis
+    container_name: redis
+    volumes:
+      - /docker/nextcloud/redis:/data
+    networks:
+      - internal
+
+networks:
+  internal:
+  proxy:
+    external: true
+
+volumes:
+  db:
+  nextcloud:
