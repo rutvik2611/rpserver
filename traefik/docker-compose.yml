@@ -24,7 +24,7 @@ services:
       - /home/rpserver/traefik/data/acme.json:/acme.json
       - /home/rpserver/traefik/data/config.yml:/config.yml:ro
     labels:
-      traefik.http.routers.api.rule: Host(`tr.rutvik2611.com`)    # Define the subdomain for the traefik dashboard.
+      traefik.http.routers.api.rule: Host(`tr.${DOMAIN}`)    # Define the subdomain for the traefik dashboard.
       traefik.http.routers.api.entryPoints: https    # Set the Traefik entry point.
       traefik.http.routers.api.service: api@internal    # Enable Traefik API.
       traefik.enable: true   # Enable Traefik reverse proxy for the Traefik dashboard.
