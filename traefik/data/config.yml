@@ -1,6 +1,7 @@
 http:
 
   ## EXTERNAL ROUTING EXAMPLE - Only use if you want to proxy something manually ##
+  # Todo : Learn and Fix Middleware ,try to load from same env
   routers:
     # Homeassistant routing example - Remove if not used
     homeassistant:

@@ -1,3 +1,27 @@
+New
+wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/superpi.sh | bash
+
+Copy ENV
+chmod +x /root/rpserver/scripts/runsuperi.sh
+cd /root/rpserver/scripts/runsuperi.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/ftpdockerubuntu.sh | bash
 wget - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/2.sh
 wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/aftercopy.sh | bash
