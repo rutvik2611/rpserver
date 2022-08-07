@@ -41,6 +41,13 @@ docker network create proxy
 echo "-----------------------------------------------------------------------------------------------------------------------"
 echo "                                       Network Called Proxy - for sharing Traefik                                                                              "
 echo "-----------------------------------------------------------------------------------------------------------------------"
+
+
+git clone https://github.com/rutvik2611/rpserver.git &&
+    cd rpserver
+#    docker-compose up
+
 # wirehole
-git clone https://github.com/IAmStoxe/wirehole.git &&
-    cd wirehole
+git clone https://github.com/IAmStoxe/wirehole.git
+
+#    docker-compose up
