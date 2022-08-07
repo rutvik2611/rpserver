@@ -32,11 +32,10 @@ services:
       - proxy
       - internal
     labels:
-      - "traefik.backend=nextcloud"
-      - "traefik.docker.network=web"
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:nc.kumula.me"
-      - "traefik.port=80"
+      - "traefik.http.routers.nc.entrypoints=https"
+      - "traefik.http.routers.portainer.rule=Host(`nc.rutvik2611.com`)"
+      - "traefik.http.services.portainer.loadbalancer.server.port=443"
 
   redis:
     image: redis

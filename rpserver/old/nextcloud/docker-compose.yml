@@ -13,22 +13,22 @@ services:
     ports:
       - 444:443
     networks:
-      - proxy
+      - new
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextcloud.entrypoints=http"
-      - "traefik.http.routers.nextcloud.rule=Host(`nextcloud.rutvik2611.com`)"
+      - "traefik.http.routers.nextcloud.rule=Host(`nextcloud.damson.ga`)"
       - "traefik.http.middlewares.nextcloud-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.routers.nextcloud.middlewares=nextcloud-https-redirect"
       - "traefik.http.routers.nextcloud-secure.entrypoints=https"
-      - "traefik.http.routers.nextcloud-secure.rule=Host(`nextcloud.rutvik2611.com`)"
+      - "traefik.http.routers.nextcloud-secure.rule=Host(`nextcloud.damson.ga`)"
       - "traefik.http.routers.nextcloud-secure.tls=true"
       - "traefik.http.routers.nextcloud-secure.service=nextcloud"
       - "traefik.http.services.nextcloud.loadbalancer.server.port=443"
       - "traefik.docker.network=proxy"
 
 networks:
-  proxy:
+  new:
     external:
-      name: proxy
+      name: new

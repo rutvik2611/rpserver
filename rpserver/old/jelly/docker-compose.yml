@@ -1,0 +1,24 @@
+nginx:
+  image: nginx:latest
+  volumes:
+    - "/home/rpserver/block_data/ALL/nextclouddata-p/admin/files/stupid/Grabbed:/files"
+    - "/home/rpserver/block_data/ALL/fileGrabconfig:/etc/nginx/conf.d"
+  ports:
+    - "8080:80"
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jelly.entrypoints=http"
+      - "traefik.http.routers.jelly.rule=Host(`jell.rutvik2611.com`)"
+      - "traefik.http.middlewares.jelly-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.jelly.middlewares=jelly-https-redirect"
+      - "traefik.http.routers.jelly-secure.entrypoints=https"
+      - "traefik.http.routers.jelly-secure.rule=Host(`jelly.rutvik2611.com`)"
+      - "traefik.http.routers.jelly-secure.tls=true"
+      - "traefik.http.routers.jelly-secure.service=jelly"
+      - "traefik.http.services.jelly.loadbalancer.server.port=8096"
+      - "traefik.docker.network=proxy"
+networks:
+  proxy:
+    external: true

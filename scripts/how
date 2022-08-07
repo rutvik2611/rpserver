@@ -2,6 +2,8 @@ wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/ftp
 wget - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/2.sh
 wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/aftercopy.sh | bash
 
+wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/superpi.sh | bash
+
 wget - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/aftercopy.sh
 wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash
 
