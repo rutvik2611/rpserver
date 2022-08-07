@@ -1,7 +1,8 @@
 wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/ftpdockerubuntu.sh | bash
+wget - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/2.sh
 wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/aftercopy.sh | bash
 
-
+wget - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/aftercopy.sh
 wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash
 
 https://tech.aufomm.com/traefik/
@@ -14,3 +15,22 @@ dc
 https://github.com/2xlink/docker-compose-traefik-nextcloud/tree/master/nextcloud
 https://www.smarthomebeginner.com/traefik-docker-nextcloud/
 https://harambasic.de/posts/docker-compose-for-nextcloud-with-traefik-2-ssh/
+
+
+
+
+
+echo $(htpasswd -nb "root" "anything") | sed -e s/\\$/\\$\\$/g
+
+
+
+wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/traefik.sh
+#pihole
+
+https://github.com/Tech-Bandit/pi-hole
+#start
+sudo systemctl disable systemd-resolved.service
+sudo systemctl stop systemd-resolved.service
+#pihole backup
+sudo systemctl enable systemd-resolved.service
+sudo systemctl start systemd-resolved.service

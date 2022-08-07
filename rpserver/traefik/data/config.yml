@@ -8,6 +8,17 @@ http:
         - https
       rule: 'Host(`homeassistant.rutvik2611.com`)'
       service: homeassistant
+      middlewares:
+        - "auth-basic"
+
+    #nc
+    nextc:
+      entryPoints:
+        - https
+      rule: 'Host(`nxc.rutvik2611.com`)'
+      service: nextc
+      middlewares:
+        - "auth-basic"
   ## SERVICES EXAMPLE ##
   services:
     # Homeassistant service example - Remove if not used
@@ -15,21 +26,42 @@ http:
       loadBalancer:
         servers:
           - url: http://192.168.60.5:8123/
+    nextc:
+      loadBalancer:
+        servers:
+          - url: http://172.20.0.2:443/
 
   ## MIDDLEWARES ##
   middlewares:
     # Only Allow Local networks
-    middlewares:
-    test-auth:
-      basicAuth:
-        users:
-          - "root:need-to-check"
     local-ipwhitelist:
       ipWhiteList:
-        sourceRange: 
+        sourceRange:
           - 127.0.0.1/32 # localhost
           - 192.168.1.1/24 # LAN Subnet
-  
+
+    # Authelia guard
+    auth:
+      forwardauth:
+        address: http://auth:9091/api/verify?rd=https://auth.domain.com/ # replace auth with your authelia container name
+        trustForwardHeader: true
+        authResponseHeaders:
+          - Remote-User
+          - Remote-Groups
+          - Remote-Name
+          - Remote-Email
+
+    # Authelia basic auth guard
+    auth-basic:
+      forwardauth:
+        address: http://auth:9091/api/verify?auth=basic # replace auth with your authelia container name
+        trustForwardHeader: true
+        authResponseHeaders:
+          - Remote-User
+          - Remote-Groups
+          - Remote-Name
+          - Remote-Email
+
     # Security headers
     securityHeaders:
       headers:

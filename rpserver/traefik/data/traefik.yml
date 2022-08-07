@@ -2,7 +2,7 @@ global:
   checkNewVersion: true
   sendAnonymousUsage: false
 serversTransport:
-  insecureSkipVerify: true  
+  insecureSkipVerify: true
 api:
   dashboard: true
   debug: true
@@ -52,9 +52,9 @@ entryPoints:
         # Generate a wildcard domain certificate
         certResolver: letsencrypt
         domains:
-          - main: rutvik2611.COM
+          - main: rutvik2611.com
             sans:
-              - '*.rutvik2611.COM'
+              - '*.rutvik2611.com'
       middlewares:
         - securityHeaders@file
 
@@ -71,14 +71,21 @@ providers:
     watch: true
     network: proxy # Add Your Docker Network Name Here
     # Default host rule to containername.domain.example
-    defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.rutvik2611.com`)"
+#    defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.rutvik2611.com`)"
     swarmModeRefreshSeconds: 15s
     exposedByDefault: false
+    #endpoint: "tcp://dockersocket:2375" # Uncomment if you are using docker socket proxy
 
+
+# Log level INFO|DEBUG|ERROR
+log:
+  level: DEBUG
+
+# Use letsencrypt to generate ssl serficiates
 certificatesResolvers:
   letsencrypt:
     acme:
-      email: admin@rutvik2611.com  # change to your provider account email address.
+      email: rutvik2611@gmail.com  # change to your provider account email address.
       storage: acme.json
       dnsChallenge:
         provider: cloudflare
@@ -86,14 +93,3 @@ certificatesResolvers:
         resolvers:
           - "1.1.1.1:53"
           - "1.0.0.1:53"
-  cloudflare:
-    acme:
-      email: rutvik2611@gmail.com
-      storage: acme.json
-      dnsChallenge:
-        provider: cloudflare
-        resolvers:
-          - "1.1.1.1:53"
-          - "1.0.0.1:53"
-  
-  

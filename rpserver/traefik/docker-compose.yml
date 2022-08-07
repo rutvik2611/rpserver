@@ -23,31 +23,13 @@ services:
       - /home/rpserver/traefik/data/traefik.yml:/traefik.yml:ro
       - /home/rpserver/traefik/data/acme.json:/acme.json
       - /home/rpserver/traefik/data/config.yml:/config.yml:ro
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.traefik.entrypoints=http"
-    #   - "traefik.http.routers.traefik.rule=Host(`tr.rutvik2611.com`)"
-    #   - "traefik.http.middlewares.traefik-auth.basicauth.users=root:$$apr1$$CYVie3Zs$$60cqDzFpJ3sntXjJ7VFsz/"
-    #   - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
-    #   - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
-    #   - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
-    #   - "traefik.http.routers.traefik-secure.entrypoints=https"
-    #   - "traefik.http.routers.traefik-secure.rule=Host(`tr.rutvik2611.com`)"
-    #   - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
-    #   - "traefik.http.routers.traefik-secure.tls=true"
-    #   - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
-    #   - "traefik.http.routers.traefik-secure.tls.domains[0].main=rutvik2611.com"
-    #   - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.rutvik2611.com"
-    #   - "traefik.http.routers.traefik-secure.service=api@internal"
     labels:
       traefik.http.routers.api.rule: Host(`tr.rutvik2611.com`)    # Define the subdomain for the traefik dashboard.
       traefik.http.routers.api.entryPoints: https    # Set the Traefik entry point.
       traefik.http.routers.api.service: api@internal    # Enable Traefik API.
       traefik.enable: true   # Enable Traefik reverse proxy for the Traefik dashboard.
-      traefik.http.routers.traefik-secure.tls.certresolver: cloudflare
-
 
 networks:
   proxy:
+    driver: bridge
     external: true
-
