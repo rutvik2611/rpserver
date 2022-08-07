@@ -42,12 +42,21 @@ echo "--------------------------------------------------------------------------
 echo "                                       Network Called Proxy - for sharing Traefik                                                                              "
 echo "-----------------------------------------------------------------------------------------------------------------------"
 
-
-git clone https://github.com/rutvik2611/rpserver.git &&
-    cd rpserver
-#    docker-compose up
-
-# wirehole
-git clone https://github.com/IAmStoxe/wirehole.git
-
-#    docker-compose up
+echo "-----------------------------------------------------------------------------------------------------------------------"
+echo "Please Copy ENV file next to all docker-compose files and relavent YML"
+echo "-----------------------------------------------------------------------------------------------------------------------"
+echo "Copy ENV "
+echo "Copy ENV "
+echo "Copy ENV "
+echo "Copy ENV "
+git clone https://github.com/rutvik2611/rpserver.git
+chmod +x /root/rpserver/scripts/runsuperi.sh
+echo "-----------------------------------------------------------------------------------------------------------------------"
+echo "Please Copy ENV file next to all docker-compose files and relavent YML"
+echo "-----------------------------------------------------------------------------------------------------------------------"
+echo "Copy ENV "
+echo "Copy ENV "
+echo "Copy ENV "
+echo "Copy ENV "
+# shellcheck disable=SC2164
+cd /root/rpserver/scripts/
