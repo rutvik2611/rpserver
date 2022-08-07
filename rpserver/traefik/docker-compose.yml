@@ -13,9 +13,9 @@ services:
       - 80:80
       - 443:443
     environment:
-      - CF_API_EMAIL=rutvik2611@gmail.com
-      - CF_DNS_API_TOKEN=Always------------Change-this
-      - CF_API_KEY=TBH-you-dont-need-it-rightnowcuzweusingletsencrpt
+      - CF_API_EMAIL="${CF_API_EMAIL}"
+      - CF_DNS_API_TOKEN="${CF_DNS_API_TOKEN}"
+      - CF_API_KEY="${CF_DNS_API_TOKEN}"
       - DOCKER_HOST=/var/run/docker.sock
       # be sure to use the correct one depending on if you are using a token or key
     volumes:
@@ -31,5 +31,4 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
