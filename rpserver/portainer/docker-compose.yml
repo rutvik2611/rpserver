@@ -20,6 +20,11 @@ services:
       - "traefik.http.routers.portainer.entrypoints=https"
       - "traefik.http.routers.portainer.rule=Host(`p.rutvik2611.com`)"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+
+#      - "traefik.http.routers.portainer.middlewares=frontend-auth"
+#      - "traefik.http.middlewares.frontend-auth.basicauth.users=user:$$2y$$05$$5NLYwEIoKtWPGR58czcjCODtzOMF4j2Yfysi.ScXkVtsgOb5lVOmK"
+
+
 #      - "traefik.enable=true"
 #      - "traefik.http.routers.portainer.entrypoints=http"
 #      - "traefik.http.routers.portainer.rule=Host(`p.rutvik2611.com`)"
