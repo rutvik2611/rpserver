@@ -1,0 +1,60 @@
+version: '3'
+services:
+  auth:
+    container_name: auth
+    image: authelia/authelia:latest
+    expose:
+      - 9091
+    volumes:
+      - /root/rpserver/rpserver/auth/data:/config
+    labels:
+      traefik.enable: true
+      traefik.http.routers.authelia.entryPoints: https
+      traefik.http.routers.authelia.rule: Host(`id.${DOMAIN}`)
+      traefik.http.services.authelia.loadbalancer.server.port: 9091
+
+    networks:
+      - proxy
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - mariadb
+
+  redis:
+    container_name: redis
+    image: bitnami/redis:latest
+    expose:
+      - 6379
+    volumes:
+      - /root/rpserver/rpserver/auth/redis:/bitnami/
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    networks:
+      - proxy
+    restart: unless-stopped
+
+  mariadb:
+    container_name: mariadb
+    image: linuxserver/mariadb:latest
+    expose:
+      - 3306
+    volumes:
+      - /root/rpserver/rpserver/auth/mariadb:/config
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_USER: root
+      MYSQL_DATABASE: authelia
+      MYSQL_USER: authelia
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.mdb.entrypoints=https"
+      - "traefik.http.routers.mdb.rule=Host(`mdb.${DOMAIN}`)"
+      - "traefik.http.services.mdb.loadbalancer.server.port=3306"
+    networks:
+      - proxy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
