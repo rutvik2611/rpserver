@@ -1,10 +1,8 @@
 #!/bin/bash
-cd rpserver/traefik/data/
+cd /root/rpserver/traefik/data/
 
 chmod 600 acme.json
-
-# shellcheck disable=SC2103
-cd ..
+cd /root/rpserver/traefik/
 docker-compose down
 docker-compose up -d
 
