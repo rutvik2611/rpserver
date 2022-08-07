@@ -49,6 +49,8 @@ echo "Copy ENV "
 echo "Copy ENV "
 echo "Copy ENV "
 echo "Copy ENV "
+sudo adduser low --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "low:password" | sudo chpasswd
 git clone https://github.com/rutvik2611/rpserver.git
 chmod +x /root/rpserver/scripts/runsuperi.sh
 echo "-----------------------------------------------------------------------------------------------------------------------"
