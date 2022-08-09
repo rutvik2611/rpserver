@@ -1,0 +1,27 @@
+version: '3'
+services:
+  jellyfin:
+    container_name: "jellyfin"
+    image: "jellyfin/jellyfin:latest"
+    volumes:
+      - root/rpserver/entertainment/jelly/config:/config:rw
+      - root/rpserver/entertainment/Shared:/all
+    labels:
+      traefik.enable: true
+      traefik.http.routers.jellyfin.entryPoints: https
+      traefik.http.routers.jellyfin.rule: Host(`jelly.${DOMAIN}`)
+      traefik.http.services.jellyfin.loadbalancer.server.port: 8096
+    environment:
+      TZ: ${TZ:?err}
+      PGID: ${PGID:?err}
+      PUID: ${PUID:?err}
+      UMASK: 002
+    networks:
+      - proxy
+    restart: unless-stopped
+#    devices: Use this if you have GPU (Research-> drivers for gpu)
+#      - /dev/dri:/dev/dri
+
+networks:
+  proxy:
+    external: true

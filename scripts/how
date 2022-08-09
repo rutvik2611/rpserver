@@ -3,6 +3,7 @@ wget -O - https://raw.githubusercontent.com/rutvik2611/rpserver/main/scripts/sup
 
 Copy ENV
 chmod +x /root/rpserver/scripts/runsuperi.sh
+./rpserver/scripts/runsuperi.sh
 cd /root/rpserver/scripts/runsuperi.sh
 
 
