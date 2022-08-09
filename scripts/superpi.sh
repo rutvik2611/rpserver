@@ -50,9 +50,15 @@ echo "Copy ENV "
 echo "Copy ENV "
 echo "Copy ENV "
 sudo adduser low --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
-echo "low:password" | sudo chpasswd
+
 git clone https://github.com/rutvik2611/rpserver.git
+echo "-----------------------------------------------------------------------------------------------------------------------"
+echo "TODO FIX THIS PERMISSIONS later"
+echo "-----------------------------------------------------------------------------------------------------------------------"
+echo "low:password" | sudo chpasswd
+cd ..
 sudo chown -R low root/
+cd root/
 chmod +x /root/rpserver/scripts/runsuperi.sh
 echo "-----------------------------------------------------------------------------------------------------------------------"
 echo "Please Copy ENV file next to all docker-compose files and relavent YML"
