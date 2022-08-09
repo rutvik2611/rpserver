@@ -61,5 +61,6 @@ echo "Copy ENV "
 echo "Copy ENV "
 echo "Copy ENV "
 echo "Copy ENV "
+curl ifconfig.me
 # shellcheck disable=SC2164
 cd /root/rpserver/scripts/

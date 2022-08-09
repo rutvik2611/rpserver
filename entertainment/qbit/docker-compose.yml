@@ -1,0 +1,39 @@
+version: '3.3'
+services:
+  qbittorrent-openvpn:
+    volumes:
+
+      - /etc/localtime:/etc/localtime:ro
+      - /root/rpserver/entertainment/qbit/config:/config:rw
+      - /root/rpserver/entertainment/Shared:/data
+    labels:
+      traefik.enable: true
+      traefik.http.routers.jellyfin.entryPoints: https
+      traefik.http.routers.jellyfin.rule: Host(`qbit.${DOMAIN}`)
+      traefik.http.services.jellyfin.loadbalancer.server.port: 8080
+    environment:
+      - CREATE_TUN_DEVICE=true
+      - OPENVPN_PROVIDER=FASTESTVPN
+      - OPENVPN_CONFIG=canada1-udp
+      - OPENVPN_USERNAME=newr2611@gmail.com
+      - OPENVPN_PASSWORD=Secret@1234
+      - WEBPROXY_ENABLED=false
+      - LOCAL_NETWORK=192.168.0.0/16
+      - NAME_SERVER=8.8.8.8,8.8.4.4
+      - PUID={rPUID}
+      - GUID={rGUID}
+    cap_add:
+      - NET_ADMIN
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+#    ports:
+#      - '8080:8080'
+    image: guillaumedsde/qbittorrent-openvpn
+    networks:
+      - proxy
+networks:
+  proxy:
+    external:
+      name: proxy
