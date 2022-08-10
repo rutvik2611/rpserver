@@ -10,6 +10,9 @@ cd /root/rpserver/entertainment/jelly
 docker-compose up -d
 echo "-----------------------------------------------------------------------------------------------------------------------"
 echo "Jellyfin is up jelly.${DOMAIN}"
+echo "Note:Jelly Takes Time to boot"
+echo "https://jelly.rutvik2611.com/web/index.html#!/wizardstart.html"
+echo "https://jelly.DOMAIN.com/web/index.html#!/wizardstart.html"
 echo "-----------------------------------------------------------------------------------------------------------------------"
 
 

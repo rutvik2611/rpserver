@@ -1,36 +1,23 @@
-version: '3.3'
+version: "2.1"
 services:
-  qbittorrent-openvpn:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID={rPUID}
+      - PGID={rGUID}
+      - TZ={TZ}
+      - WEBUI_PORT=8080
     volumes:
-
       - /etc/localtime:/etc/localtime:ro
       - /root/rpserver/entertainment/qbit/config:/config:rw
       - /root/rpserver/entertainment/Shared:/data
     labels:
       traefik.enable: true
-      traefik.http.routers.jellyfin.entryPoints: https
-      traefik.http.routers.jellyfin.rule: Host(`qbit.${DOMAIN}`)
-      traefik.http.services.jellyfin.loadbalancer.server.port: 8080
-    environment:
-      - CREATE_TUN_DEVICE=true
-      - OPENVPN_PROVIDER=FASTESTVPN
-      - OPENVPN_CONFIG=canada1-udp
-      - OPENVPN_USERNAME=newr2611@gmail.com
-      - OPENVPN_PASSWORD=Secret@1234
-      - WEBPROXY_ENABLED=false
-      - LOCAL_NETWORK=192.168.0.0/16
-      - NAME_SERVER=8.8.8.8,8.8.4.4
-      - PUID={rPUID}
-      - GUID={rGUID}
-    cap_add:
-      - NET_ADMIN
-    logging:
-      driver: json-file
-      options:
-        max-size: 10m
-#    ports:
-#      - '8080:8080'
-    image: guillaumedsde/qbittorrent-openvpn
+      traefik.http.routers.qbit.entryPoints: https
+      traefik.http.routers.qbit.rule: Host(`qbit.${DOMAIN}`)
+      traefik.http.services.qbit.loadbalancer.server.port: 8080
+    restart: unless-stopped
     networks:
       - proxy
 networks:
