@@ -10,9 +10,9 @@ services:
       - WEBUI_PORT=8080
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./config:/config:rw
-      - ./theme/vuetorrent:/data
-      - ${SHAREDFOLDER:?err}:/downloads
+      - /root/rpserver/entertainment/qbit/config:/config:rw
+      - /root/rpserver/entertainment/qbit/theme/vuetorrent:/data
+      - /root/rpserver/entertainment/Shared:/downloads
     labels:
       traefik.enable: true
       traefik.http.routers.qbit.entryPoints: https
