@@ -11,6 +11,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /root/rpserver/entertainment/qbit/config:/config:rw
+      - /root/rpserver/entertainment/qbit/theme/vuetorrent:/data
       - /root/rpserver/entertainment/Shared:/downloads
     labels:
       traefik.enable: true
