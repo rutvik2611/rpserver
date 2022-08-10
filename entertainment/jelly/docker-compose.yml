@@ -4,8 +4,8 @@ services:
     container_name: "jellyfin"
     image: "jellyfin/jellyfin:latest"
     volumes:
-      - ./config:/config:rw
-      - ${SHAREDFOLDER:?err}:/all
+      - /root/rpserver/entertainment/jelly/config:/config:rw
+      - /root/rpserver/entertainment/Shared:/all
     labels:
       traefik.enable: true
       traefik.http.routers.jellyfin.entryPoints: https
