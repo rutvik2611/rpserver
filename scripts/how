@@ -5,6 +5,8 @@ Copy ENV
 chmod +x /root/rpserver/scripts/runsuperi.sh
 ./rpserver/scripts/runsuperi.sh
 cd /root/rpserver/scripts/runsuperi.sh
+Ubuntu test file
+magnet:?xt=urn:btih:RJK47PK4UXIRKBZWI5SZG3CPTZK3EU7N&dn=ubuntu-22.04-live-server-amd64.iso&xl=1466714112&tr=https%3A%2F%2Ftorrent.ubuntu.com%2Fannounce
 
 
 
