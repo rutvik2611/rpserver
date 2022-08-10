@@ -57,6 +57,7 @@ entryPoints:
               - '*.rutvik2611.com'
       middlewares:
         - securityHeaders@file
+        - traefik-real-ip@file
 
 providers:
   providersThrottleDuration: 2s
@@ -79,7 +80,7 @@ providers:
 
 # Log level INFO|DEBUG|ERROR
 log:
-  level: DEBUG
+  level: INFO
 
 # Use letsencrypt to generate ssl serficiates
 certificatesResolvers:
@@ -93,3 +94,8 @@ certificatesResolvers:
         resolvers:
           - "1.1.1.1:53"
           - "1.0.0.1:53"
+experimental:
+  plugins:
+    traefik-real-ip:
+      modulename: github.com/soulbalz/traefik-real-ip
+      version: v1.0.3

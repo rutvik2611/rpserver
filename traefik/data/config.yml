@@ -83,6 +83,11 @@ http:
         stsIncludeSubdomains: true
         stsSeconds: 63072000
         stsPreload: true
+    traefik-real-ip:
+      plugin:
+        traefik-real-ip:
+          excludednets:
+            - "1.1.1.1/24"
 
 # Only use secure ciphers - https://ssl-config.mozilla.org/#server=traefik&version=2.6.0&config=intermediate&guideline=5.6
 tls:
