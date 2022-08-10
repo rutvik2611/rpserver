@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Vue Theme
+entertainment/qbit/theme/vuetorrent.zip
+entertainment/qbit/theme/vuetorrent/public
