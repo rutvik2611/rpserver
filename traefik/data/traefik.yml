@@ -57,6 +57,8 @@ entryPoints:
               - '*.rutvik2611.com'
       middlewares:
         - securityHeaders@file
+        - traefik-real-ip@file
+#        - my-cache@file
 
 providers:
   providersThrottleDuration: 2s
@@ -71,7 +73,7 @@ providers:
     watch: true
     network: proxy # Add Your Docker Network Name Here
     # Default host rule to containername.domain.example
-#    defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.rutvik2611.com`)"
+    #    defaultRule: "Host(`{{ index .Labels \"com.docker.compose.service\"}}.rutvik2611.com`)"
     swarmModeRefreshSeconds: 15s
     exposedByDefault: false
     #endpoint: "tcp://dockersocket:2375" # Uncomment if you are using docker socket proxy
@@ -93,3 +95,11 @@ certificatesResolvers:
         resolvers:
           - "1.1.1.1:53"
           - "1.0.0.1:53"
+experimental:
+  plugins:
+    traefik-real-ip:
+      modulename: github.com/soulbalz/traefik-real-ip
+      version: v1.0.3
+    cache:
+      modulename: github.com/traefik/plugin-simplecache
+      version: v0.2.1
