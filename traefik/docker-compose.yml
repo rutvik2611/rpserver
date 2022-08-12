@@ -20,9 +20,9 @@ services:
       # be sure to use the correct one depending on if you are using a token or key
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik.yml:/traefik.yml:ro
+      - ./data/traefik.yml:/traefik.yml:ro
       - ./data/acme.json:/acme.json
-      - ./config.yml:/config.yml:ro
+      - ./data/config.yml:/config.yml:ro
     labels:
       traefik.http.routers.api.rule: Host(`tr.${DOMAIN}`)    # Define the subdomain for the traefik dashboard.
       traefik.http.routers.api.entryPoints: https    # Set the Traefik entry point.

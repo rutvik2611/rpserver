@@ -60,6 +60,7 @@ cd ..
 sudo chown -R low root/
 cd root/
 chmod +x /root/rpserver/scripts/runsuperi.sh
+chmod +x /root/rpserver/scripts/entertainment.sh
 echo "-----------------------------------------------------------------------------------------------------------------------"
 echo "Please Copy ENV file next to all docker-compose files and relavent YML"
 echo "-----------------------------------------------------------------------------------------------------------------------"
