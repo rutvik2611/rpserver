@@ -44,7 +44,7 @@ http:
     # Authelia guard
     auth:
       forwardauth:
-        address: http://auth:9091/api/verify?rd=https://auth.domain.com/ # replace auth with your authelia container name
+        address: http://auth:9091/api/verify?rd=https://auth.rutvik2611.com/ # replace auth with your authelia container name
         trustForwardHeader: true
         authResponseHeaders:
           - Remote-User
@@ -92,6 +92,8 @@ http:
       plugin:
         cache:
           path: /cache
+    gzip:
+      compress: {}
 
 # Only use secure ciphers - https://ssl-config.mozilla.org/#server=traefik&version=2.6.0&config=intermediate&guideline=5.6
 tls:
