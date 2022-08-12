@@ -58,6 +58,7 @@ entryPoints:
       middlewares:
         - securityHeaders@file
         - traefik-real-ip@file
+#        - auth@file
 #        - my-cache@file
 
 providers:

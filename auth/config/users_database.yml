@@ -10,7 +10,7 @@ users:
   admin:
     displayname: "Admin Name"
     # Password is Authelia
-    password:
+    password: 
     email: rutvik2611@gmail.com
     groups:
       - admins

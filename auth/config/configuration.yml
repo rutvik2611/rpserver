@@ -35,12 +35,14 @@ access_control:
   default_policy: deny
   rules:
     # Rules applied to everyone
-    - domain: public.${DOMAIN:?err}
-      policy: bypass
-    - domain: p.rutvik2611.com
+    - domain: code.${DOMAIN:?err}
       policy: one_factor
+    - domain: jelly.rutvik2611.com
+      policy: two_factor
     - domain: qbit.rutvik2611.com
       policy: one_factor
+    - domain: tr.rutvik2611.com
+      policy: bypass
 
 session:
   name: authelia_session
@@ -48,7 +50,7 @@ session:
   secret: unsecure_session_secret
   expiration: 3600  # 1 hour
   inactivity: 300  # 5 minutes
-  domain: ${DOMAIN:?err}  # Should match whatever your root protected domain is
+  domain: rutvik2611.com  # Should match whatever your root protected domain is
 
   # redis:
   #   host: redis

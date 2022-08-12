@@ -44,7 +44,7 @@ http:
     # Authelia guard
     auth:
       forwardauth:
-        address: http://auth:9091/api/verify?rd=https://auth.rutvik2611.com/ # replace auth with your authelia container name
+        address: http://authelia:9091/api/verify?rd=https://auth.rutvik2611.com/ # replace auth with your authelia container name
         trustForwardHeader: true
         authResponseHeaders:
           - Remote-User
@@ -55,7 +55,7 @@ http:
     # Authelia basic auth guard
     auth-basic:
       forwardauth:
-        address: http://auth:9091/api/verify?auth=basic # replace auth with your authelia container name
+        address: http://authelia:9091/api/verify?auth=basic # replace auth with your authelia container name
         trustForwardHeader: true
         authResponseHeaders:
           - Remote-User
