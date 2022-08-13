@@ -42,7 +42,7 @@ http:
           - 192.168.1.1/24 # LAN Subnet
 
     # Authelia guard
-    auth:
+    authelia:
       forwardauth:
         address: http://authelia:9091/api/verify?rd=https://auth.rutvik2611.com/ # replace auth with your authelia container name
         trustForwardHeader: true
