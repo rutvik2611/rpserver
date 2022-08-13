@@ -8,11 +8,18 @@
 # List of users
 users:
   admin:
-    displayname: "Admin Name"
-    # Password is Authelia
-    password: 
+    displayname: "admin Name"
+    # Password is admin
+    password: "" # admin:admin
     email: rutvik2611@gmail.com
     groups:
       - admins
       - dev
-...
+admin2:
+  displayname: "admin2 Name"
+  # Password is admin
+  password: "docker run authelia/authelia:latest authelia hash-password -- 'admin'" # admin:admin
+  email: rutviks2611@gmail.com
+  groups:
+    - admins
+    - dev
