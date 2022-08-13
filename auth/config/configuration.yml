@@ -10,7 +10,7 @@ log:
   level: debug
 theme: dark
 # This secret can also be set using the env variables AUTHELIA_JWT_SECRET_FILE
-jwt_secret: ${a_very_important_secret}
+jwt_secret: "${a_very_important_secret}" # Todo ____>: may be check this
 default_redirection_url: https://auth.rutvik2611.com
 totp:
   issuer: authelia.com
@@ -32,17 +32,16 @@ authentication_backend:
       memory: 64
 
 access_control:
-  default_policy: deny
+  default_policy: one_factor
   rules:
     # Rules applied to everyone
-    - domain: code.${DOMAIN:?err}
-      policy: one_factor
-    - domain: jelly.rutvik2611.com
-      policy: two_factor
-    - domain: qbit.rutvik2611.com
-      policy: one_factor
-    - domain: tr.rutvik2611.com
+    - domain: code.rutvik2611.com # TODO: ${DOMAIN:?err} not working here
       policy: bypass
+    - domain: # We need to figure it out at traefik level if its possible
+        - "*.domain.com"
+      subject:
+        - "group:admins"
+      policy: one_factor
 
 session:
   name: authelia_session
