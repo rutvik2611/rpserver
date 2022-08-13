@@ -18,6 +18,7 @@ services:
       traefik.http.routers.qbit.entryPoints: https
       traefik.http.routers.qbit.rule: Host(`qbit.${DOMAIN:?err}`)
       traefik.http.services.qbit.loadbalancer.server.port: 8080
+#      traefik.http.routers.qbit.middlewares: auth@file
     restart: unless-stopped
     networks:
       - proxy
