@@ -28,6 +28,7 @@ services:
       traefik.http.routers.api.entryPoints: https    # Set the Traefik entry point.
       traefik.http.routers.api.service: api@internal    # Enable Traefik API.
       traefik.enable: true   # Enable Traefik reverse proxy for the Traefik dashboard.
+#      traefik.http.routers.api.middlewares: authelia@file
 
 networks:
   proxy:
